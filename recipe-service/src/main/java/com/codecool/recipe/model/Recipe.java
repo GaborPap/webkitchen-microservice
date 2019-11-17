@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,6 +25,7 @@ public class Recipe {
     @GeneratedValue
     private Long id;
 
+    @ElementCollection
     private Map<Integer, Integer> ingredients;
 
     @NotNull
