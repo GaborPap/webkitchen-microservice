@@ -42,4 +42,10 @@ public class RecipeController {
         recipeService.deleteRecipe(id);
         return new HttpEntity(HttpStatus.OK);
     }
+
+    @PutMapping("/{id}")
+    public HttpEntity updateRecipe(@PathVariable("id") Long id, @RequestBody Recipe recipe){
+        recipeService.updateRecipe(id, recipe);
+        return new HttpEntity(HttpStatus.OK);
+    }
 }

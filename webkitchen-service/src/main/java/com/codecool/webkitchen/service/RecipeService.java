@@ -48,5 +48,10 @@ public class RecipeService {
     public void deleteRecipe(Long id){
         restTemplate.delete(recipesUrl + "/"+ id);
     }
-}
 
+    public void updateRecipe(Long id, Recipe recipe){
+        HttpEntity<Recipe> request = new HttpEntity<>(recipe);
+        restTemplate.put(recipesUrl+ "/" + id, request, Recipe.class);
+    }
+
+}
