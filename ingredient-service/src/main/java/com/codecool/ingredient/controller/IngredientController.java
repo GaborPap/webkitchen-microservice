@@ -33,6 +33,12 @@ public class IngredientController {
         return ingredient;
     }
 
+    @PutMapping("/{id}")
+    public Ingredient updateIngredient(@PathVariable("id") Long id, @RequestBody Ingredient ingredient){
+        return ingredientService.updateRecommendation(id, ingredient);
+    }
+
+
     @DeleteMapping("/{id}")
     public Ingredient removeIngredientById(@PathVariable("id") Long id){
         ingredientService.remove(id);

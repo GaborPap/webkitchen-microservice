@@ -41,5 +41,16 @@ public class IngredientService {
         HttpEntity<Ingredient> request = new HttpEntity<>(ingredient);
         return restTemplate.postForObject(ingredientUrl+"/", request, Ingredient.class);
     }
+
+    public void removeIngredient(Long id){
+        //HttpEntity<Ingredient> request = new HttpEntity<>(ingredient);
+        //return restTemplate.postForObject(ingredientUrl+"/", request, Ingredient.class);
+        restTemplate.delete(ingredientUrl+"/"+id);
+    }
+
+    public void updateIngredient(Long id, Ingredient ingredient){
+        HttpEntity<Ingredient> request = new HttpEntity<>(ingredient);
+        restTemplate.put(ingredientUrl + "/"+id, request, Ingredient.class);
+    }
 }
 

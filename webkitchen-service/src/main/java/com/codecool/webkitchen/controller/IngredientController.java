@@ -3,6 +3,8 @@ package com.codecool.webkitchen.controller;
 import com.codecool.ingredient.model.Ingredient;
 import com.codecool.webkitchen.service.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +31,19 @@ public class IngredientController {
     public Ingredient addIngredient(@RequestBody Ingredient ingredient){
         return ingredientService.addIngredient(ingredient);
     }
+
+    @DeleteMapping("/{id}")
+    public HttpEntity deleteIngredient(@PathVariable("id") Long id){
+        ingredientService.removeIngredient(id);
+        return new HttpEntity(HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public HttpEntity updateIngredient(@PathVariable("id") Long id, @RequestBody Ingredient ingredient){
+        ingredientService.updateIngredient(id, ingredient);
+        return new HttpEntity(HttpStatus.OK);
+    }
+
 }
 
 

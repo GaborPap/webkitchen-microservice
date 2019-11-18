@@ -34,5 +34,26 @@ public class IngredientService {
     public void remove(Long id) {
         ingredientRepository.removeById(id);
     }
+
+    public Ingredient updateRecommendation(Long id, Ingredient ingredient){
+        if (ingredient==null)
+            return null;
+
+
+        Optional<Ingredient> ingredientOptional = ingredientRepository.findById(id);
+        if (ingredientOptional.isPresent()) {
+
+            Ingredient currentIngredient = ingredientOptional.get();
+
+            currentIngredient.setAmount(ingredient.getAmount());
+            currentIngredient.setDescription(ingredient.getDescription());
+            currentIngredient.setImageUrl(ingredient.getImageUrl());
+            currentIngredient.setName(ingredient.getName());
+            ingredientRepository.save(currentIngredient);
+
+            return currentIngredient;
+        }
+        return null;
+    }
 }
 
