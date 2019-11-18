@@ -37,3 +37,4 @@ public class WebkitchenApplication {
 		return new RestTemplate();
 	}
 }
+
