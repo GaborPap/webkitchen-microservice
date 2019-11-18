@@ -37,5 +37,9 @@ public class IngredientService {
         return restTemplate.getForEntity(ingredientUrl + "/" +id, Ingredient.class).getBody();
     }
 
+    public Ingredient addIngredient(Ingredient ingredient){
+        HttpEntity<Ingredient> request = new HttpEntity<>(ingredient);
+        return restTemplate.postForObject(ingredientUrl+"/", request, Ingredient.class);
+    }
 }
 
