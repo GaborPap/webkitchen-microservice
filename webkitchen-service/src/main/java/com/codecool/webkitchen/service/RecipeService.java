@@ -44,5 +44,9 @@ public class RecipeService {
     public Recipe getRecipeById(Long id) {
         return restTemplate.getForEntity(recipesUrl + "/" +id, Recipe.class).getBody();
     }
+
+    public void deleteRecipe(Long id){
+        restTemplate.delete(recipesUrl + "/"+ id);
+    }
 }
 
