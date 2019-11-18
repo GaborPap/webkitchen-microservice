@@ -37,5 +37,10 @@ public class RecipeController {
         recipeService.deleteRecipe(id);
         return new HttpEntity(HttpStatus.OK);
     }
+
+    @PutMapping("/{id}")
+    public Recipe updateRecipe(@PathVariable("id") Long id, @RequestBody Recipe recipe){
+        return recipeService.updateRecipe(id, recipe);
+    }
 }
 
