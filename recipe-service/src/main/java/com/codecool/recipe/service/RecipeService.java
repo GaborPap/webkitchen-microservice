@@ -26,4 +26,9 @@ public class RecipeService {
         Optional<Recipe> recipe = recipeRepository.findById(id);
         return recipe.orElse(null);
     }
+
+    public Recipe addRecipe(Recipe recipe){
+        recipeRepository.save(recipe);
+        return recipe;
+    }
 }

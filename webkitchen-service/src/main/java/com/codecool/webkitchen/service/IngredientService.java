@@ -43,8 +43,6 @@ public class IngredientService {
     }
 
     public void removeIngredient(Long id){
-        //HttpEntity<Ingredient> request = new HttpEntity<>(ingredient);
-        //return restTemplate.postForObject(ingredientUrl+"/", request, Ingredient.class);
         restTemplate.delete(ingredientUrl+"/"+id);
     }
 

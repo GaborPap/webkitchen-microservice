@@ -4,6 +4,7 @@ import com.codecool.recipe.model.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -32,4 +33,16 @@ public class RecipeService {
         );
         return response.getBody();
     }
+
+
+
+    public Recipe addRecipe(Recipe recipe){
+        HttpEntity<Recipe> request = new HttpEntity<>(recipe);
+        return restTemplate.postForObject(recipesUrl + "/", request, Recipe.class);
+    }
+
+    public Recipe getRecipeById(Long id) {
+        return restTemplate.getForEntity(recipesUrl + "/" +id, Recipe.class).getBody();
+    }
 }
+

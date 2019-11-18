@@ -3,10 +3,7 @@ package com.codecool.recipe.controller;
 import com.codecool.recipe.model.Recipe;
 import com.codecool.recipe.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,10 @@ public class RecipeController {
         return recipeService.getRecipeById(id);
     }
 
+    @PostMapping("/")
+    public Recipe addRecipe(@RequestBody Recipe recipe){
+        recipeService.addRecipe(recipe);
+        return recipe;
+    }
 }
 
