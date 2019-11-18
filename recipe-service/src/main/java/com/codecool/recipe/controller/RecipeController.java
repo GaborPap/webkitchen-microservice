@@ -3,6 +3,8 @@ package com.codecool.recipe.controller;
 import com.codecool.recipe.model.Recipe;
 import com.codecool.recipe.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +30,12 @@ public class RecipeController {
     public Recipe addRecipe(@RequestBody Recipe recipe){
         recipeService.addRecipe(recipe);
         return recipe;
+    }
+
+    @DeleteMapping("/{id}")
+    public HttpEntity deleteRecipe(@PathVariable("id") Long id){
+        recipeService.deleteRecipe(id);
+        return new HttpEntity(HttpStatus.OK);
     }
 }
 
