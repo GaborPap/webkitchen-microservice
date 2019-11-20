@@ -30,7 +30,7 @@ public class Ingredient {
 
     Integer amount;
 
-    String ImageUrl;
+    String imageUrl;
 
    // @ManyToOne
     //@JsonIgnore
