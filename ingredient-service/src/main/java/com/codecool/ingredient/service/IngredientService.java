@@ -32,7 +32,7 @@ public class IngredientService {
     }
 
     public void remove(Long id) {
-        ingredientRepository.removeById(id);
+        //ingredientRepository.removeById(id);
     }
 
     public Ingredient updateRecommendation(Long id, Ingredient ingredient){
