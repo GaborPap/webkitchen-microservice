@@ -45,7 +45,7 @@ public class IngredientService {
 
             Ingredient currentIngredient = ingredientOptional.get();
 
-            currentIngredient.setAmount(ingredient.getAmount());
+            currentIngredient.setUnit(ingredient.getUnit());
             currentIngredient.setDescription(ingredient.getDescription());
             currentIngredient.setImageUrl(ingredient.getImageUrl());
             currentIngredient.setName(ingredient.getName());
