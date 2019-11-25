@@ -56,10 +56,28 @@ public class DataInitilaizer implements CommandLineRunner {
                 .servings(2)
                 .build();
 
+        Map<Integer, Integer> ingredients_menu_one = new HashMap<>();
+        ingredients_parizsi.put(1, 20);
+        ingredients_parizsi.put(2,1);
+        ingredients_parizsi.put(3,15);
+        ingredients_parizsi.put(4,13);
+
+        Recipe menuone = Recipe.builder()
+                .ingredients(ingredients_parizsi)
+                .name("1-es menü")
+                .description("Rántott csibemell filé császár zsemlében, uborkával, hasábburgonyával és 0,33 l dobozos Coca-Colával.")
+                .image("http://csirkecsibesz.hu/csirkecsibesz.hu/default/cache/images/product/300_300/m/e/men%C3%BC1.jpg")
+                .directions("Sorban állni sokat")
+                .servings(1)
+                .build();
+
+
         recipeRepository.save(recipe);
         recipeRepository.save(cheese);
         recipeRepository.save(parizsi);
+        recipeRepository.save(menuone);
 
     }
 }
+
 

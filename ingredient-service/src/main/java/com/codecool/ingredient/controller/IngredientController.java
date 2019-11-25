@@ -1,7 +1,10 @@
 package com.codecool.ingredient.controller;
 
 import com.codecool.ingredient.model.Ingredient;
+import com.codecool.ingredient.model.IngredientUnit;
 import com.codecool.ingredient.service.IngredientService;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,8 +43,15 @@ public class IngredientController {
 
 
     @DeleteMapping("/{id}")
-    public Ingredient removeIngredientById(@PathVariable("id") Long id){
+    public HttpEntity removeIngredientById(@PathVariable("id") Long id){
         ingredientService.remove(id);
-        return null;
+        return new HttpEntity(HttpStatus.OK);
+    }
+
+    @GetMapping("/units")
+    public String getUnits()
+    {
+        System.out.println("sdjfdslfsdf");
+        return ingredientService.getUnits();
     }
 }

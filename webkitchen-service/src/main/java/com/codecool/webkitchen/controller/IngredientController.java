@@ -44,6 +44,10 @@ public class IngredientController {
         return new HttpEntity(HttpStatus.OK);
     }
 
+    @GetMapping("/units")
+    public String getUnits(){
+        return ingredientService.getUints();
+    }
 }
 
 

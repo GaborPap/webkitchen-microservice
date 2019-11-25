@@ -50,5 +50,11 @@ public class IngredientService {
         HttpEntity<Ingredient> request = new HttpEntity<>(ingredient);
         restTemplate.put(ingredientUrl + "/"+id, request, Ingredient.class);
     }
+
+    public String getUints() {
+        return restTemplate.getForEntity(ingredientUrl + "/units", String.class).getBody();
+    }
+
+
 }
 

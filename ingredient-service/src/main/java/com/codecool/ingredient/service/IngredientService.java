@@ -1,11 +1,16 @@
 package com.codecool.ingredient.service;
 
 import com.codecool.ingredient.model.Ingredient;
+import com.codecool.ingredient.model.IngredientUnit;
 import com.codecool.ingredient.repository.IngredientRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class IngredientService {
@@ -55,5 +60,11 @@ public class IngredientService {
         }
         return null;
     }
-}
 
+    public String getUnits(){
+        List<String> enumNames = Stream.of(IngredientUnit.values())
+                .map(Enum::name)
+                .collect(Collectors.toList());
+        return String.join(",", enumNames);
+    }
+}
