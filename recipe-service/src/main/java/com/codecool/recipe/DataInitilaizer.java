@@ -23,10 +23,10 @@ public class DataInitilaizer implements CommandLineRunner {
 
         Recipe recipe = Recipe.builder()
                 .ingredients(ingredients)
-                .name("Sült krumpli")
-                .description("Nagyon finom sült krumpli")
+                .name("French fries")
+                .description("Description of French fries.")
                 .image("https://mediterran.cafeblog.hu/files/2019/02/A-legropog%C3%B3sabb-h%C3%A1zi-s%C3%BClt-krumpli-titka-glut%C3%A9nmentes2.jpg")
-                .directions("Sokat kell sütni")
+                .directions("ut the potatoes lengthwise into 1/4-inch-thick slices, then cut each slice lengthwise into 1/4-inch-thick fries. Put the fries in a large bowl of cold water and refrigerate for at least 1 hour or up to 8 hours.")
                 .servings(1)
                 .build();
 
@@ -36,10 +36,10 @@ public class DataInitilaizer implements CommandLineRunner {
         ingredients_sajt.put(3,4);
         Recipe cheese = Recipe.builder()
                 .ingredients(ingredients_sajt)
-                .name("Rántott sajt")
-                .description("Nagyon finom rántott")
+                .name("Fried cheese")
+                .description("Fried cheese is a dish prepared using cheese that is fried in oil.")
                 .image("https://kep.cdn.indexvas.hu/1/0/1877/18770/187708/18770865_216b5062d3bc18253f023449fe44f88b_wm.jpg")
-                .directions("Sokat kell ebből is sütni")
+                .directions("Sprinkle cheese with optional salt, if desired. Dredge slices in flour, then in beaten egg, and finally in bread crumbs, making sure the cheese slices are completely covered. Pan fry quickly in hot oil or shortening until golden brown. Serve immediately.")
                 .servings(2)
                 .build();
 
@@ -49,10 +49,10 @@ public class DataInitilaizer implements CommandLineRunner {
 
         Recipe parizsi = Recipe.builder()
                 .ingredients(ingredients_parizsi)
-                .name("Rántott párizsi")
-                .description("Nagyon finom rántott")
-                .image("http://www.foodyny.hu/images/rantottparizsi_3.png")
-                .directions("Sokat kell ebből is sütni")
+                .name("Pumpkin Whoopie Pies")
+                .description("A delicious pumpkin cookie that can be eaten single or filled with whoopie pie filling to make it even better.")
+                .image("https://images.media-allrecipes.com/userphotos/720x405/744202.jpg")
+                .directions("Preheat oven to 350 degrees F (175 degrees C). Lightly grease baking sheets. Combine the oil and brown sugar. Mix in the pumpkin and eggs, beating well. Add the flour, salt, baking powder, baking soda, 1 teaspoon vanilla, cinnamon, ginger and cloves. Mix well.")
                 .servings(2)
                 .build();
 
@@ -64,10 +64,10 @@ public class DataInitilaizer implements CommandLineRunner {
 
         Recipe menuone = Recipe.builder()
                 .ingredients(ingredients_parizsi)
-                .name("1-es menü")
-                .description("Rántott csibemell filé császár zsemlében, uborkával, hasábburgonyával és 0,33 l dobozos Coca-Colával.")
-                .image("http://csirkecsibesz.hu/csirkecsibesz.hu/default/cache/images/product/300_300/m/e/men%C3%BC1.jpg")
-                .directions("Sorban állni sokat")
+                .name("Perfect Turkey")
+                .description("A perfectly seasoned and juicy turkey. My friend from France taught me to cook turkey like this, but she never measures anything so use your own judgment for vegetable amounts, etc. I usually err on the side of 'more is better")
+                .image("https://images.media-allrecipes.com/userphotos/720x405/6573896.jpg")
+                .directions("Rub the turkey inside and out with the kosher salt. Place the bird in a large stock pot, and cover with cold water. Place in the refrigerator, and allow the turkey to soak in the salt and water mixture 12 hours, or overnight.t")
                 .servings(1)
                 .build();
 

@@ -51,7 +51,6 @@ public class IngredientController {
     @GetMapping("/units")
     public String getUnits()
     {
-        System.out.println("sdjfdslfsdf");
         return ingredientService.getUnits();
     }
 }
