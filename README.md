@@ -37,6 +37,7 @@ On this page, we can edit the data of existing ingredients. On the same page can
 ***Recipe list page***
 
 <img src=/public/static/images/screenshots/recipe_list.png width=700>
+<img src=/public/static/images/screenshots/recipe_list_with_ingredients.png width=700>
 
 On this page, we can see the recipes stored in our WebKitchen. We can see the basic details and the ingredients by the recipes. 
 
