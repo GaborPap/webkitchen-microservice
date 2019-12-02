@@ -18,8 +18,8 @@ public class DataInitilaizer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Map<Integer, Integer> ingredients = new HashMap<>();
-        ingredients.put(1, 112);
-        ingredients.put(2,51);
+        ingredients.put(1,1);
+        ingredients.put(3,1);
 
         Recipe recipe = Recipe.builder()
                 .ingredients(ingredients)
@@ -31,9 +31,9 @@ public class DataInitilaizer implements CommandLineRunner {
                 .build();
 
         Map<Integer, Integer> ingredients_sajt = new HashMap<>();
-        ingredients_sajt.put(1, 12);
-        ingredients_sajt.put(2,31);
-        ingredients_sajt.put(3,4);
+        ingredients_sajt.put(1, 2);
+        ingredients_sajt.put(3,1);
+        ingredients_sajt.put(4,1);
         Recipe cheese = Recipe.builder()
                 .ingredients(ingredients_sajt)
                 .name("Fried cheese")
@@ -44,28 +44,28 @@ public class DataInitilaizer implements CommandLineRunner {
                 .build();
 
         Map<Integer, Integer> ingredients_parizsi = new HashMap<>();
-        ingredients_parizsi.put(2, 20);
-        ingredients_parizsi.put(4,13);
+        ingredients_parizsi.put(2, 2);
+        ingredients_parizsi.put(4,1);
 
         Recipe parizsi = Recipe.builder()
                 .ingredients(ingredients_parizsi)
-                .name("Pumpkin Whoopie Pies")
-                .description("A delicious pumpkin cookie that can be eaten single or filled with whoopie pie filling to make it even better.")
+                .name("Pumpkin Pies")
+                .description("A delicious pumpkin cookie that can be eaten single or filled with whoopie.")
                 .image("https://images.media-allrecipes.com/userphotos/720x405/744202.jpg")
                 .directions("Preheat oven to 350 degrees F (175 degrees C). Lightly grease baking sheets. Combine the oil and brown sugar. Mix in the pumpkin and eggs, beating well. Add the flour, salt, baking powder, baking soda, 1 teaspoon vanilla, cinnamon, ginger and cloves. Mix well.")
                 .servings(2)
                 .build();
 
         Map<Integer, Integer> ingredients_menu_one = new HashMap<>();
-        ingredients_parizsi.put(1, 20);
+        ingredients_parizsi.put(1,2);
         ingredients_parizsi.put(2,1);
-        ingredients_parizsi.put(3,15);
-        ingredients_parizsi.put(4,13);
+        ingredients_parizsi.put(3,1);
+        ingredients_parizsi.put(4,1);
 
         Recipe menuone = Recipe.builder()
-                .ingredients(ingredients_parizsi)
+                .ingredients(ingredients_menu_one)
                 .name("Perfect Turkey")
-                .description("A perfectly seasoned and juicy turkey. My friend from France taught me to cook turkey like this, but she never measures anything so use your own judgment for vegetable amounts, etc. I usually err on the side of 'more is better")
+                .description("A perfectly seasoned and juicy turkey. ")
                 .image("https://images.media-allrecipes.com/userphotos/720x405/6573896.jpg")
                 .directions("Rub the turkey inside and out with the kosher salt. Place the bird in a large stock pot, and cover with cold water. Place in the refrigerator, and allow the turkey to soak in the salt and water mixture 12 hours, or overnight.t")
                 .servings(1)
