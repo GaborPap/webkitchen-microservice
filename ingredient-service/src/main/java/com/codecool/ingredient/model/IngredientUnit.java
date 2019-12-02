@@ -5,4 +5,5 @@ public enum IngredientUnit {
     LITER,
     TEASPOON,
     SPOON,
+    CUP
 }

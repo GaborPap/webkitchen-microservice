@@ -2,6 +2,7 @@ package com.codecool.ingredient.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -26,6 +27,7 @@ public class Ingredient {
     @Enumerated
     private IngredientUnit unit;
 
+    @Length(max = 2000)
     String description;
 
     String imageUrl;

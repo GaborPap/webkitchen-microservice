@@ -34,7 +34,7 @@ public class DataInitilaizer implements CommandLineRunner {
 
         Ingredient pepper = Ingredient.builder()
                 .name("Pepper")
-                .description("The chili pepper (also chile, chile pepper, chilli pepper, or chilli[4]), from Nahuatl chīlli (Nahuatl pronunciation: [ˈt͡ʃiːli] (About this soundlisten)), is the fruit of plants from the genus Capsicum which are members of the nightshade family,.")
+                .description("The chili pepper (also chile, chile pepper, chilli pepper, or chilli[4]), from Nahuatl chīlli  is the fruit of plants from the genus Capsicum which are members of the nightshade family.")
               //  .ImageUrl("pepper.jpg")
                 .unit(IngredientUnit.KG)
                 .imageUrl("https://cdn.shopify.com/s/files/1/1537/5553/products/12416_1024x1024.jpg?v=1486447009")
@@ -48,10 +48,51 @@ public class DataInitilaizer implements CommandLineRunner {
                 .imageUrl("https://dairyfarmersofcanada.ca/sites/default/files/styles/full_width_large/public/getty-854296650.jpg?itok=oVdN6l2l")
                 .build();
 
-        ingredientRepository.save(salt);
-        ingredientRepository.save(sugar);
-        ingredientRepository.save(pepper);
-        ingredientRepository.save(milk);
+        Ingredient honey = Ingredient.builder()
+                .name("Honey")
+                .description("Honey is a sweet, viscous food substance made by bees and some related insects. Bees produce honey from the sugary secretions of plants (floral nectar) or from secretions of other insects (such as honeydew), by regurgitation, enzymatic activity, and water evaporation.")
+                //  .ImageUrl("pepper.jpg")
+                .unit(IngredientUnit.CUP)
+                .imageUrl("https://ichef.bbci.co.uk/news/660/cpsprodpb/49EA/production/_103122981_honey.jpg")
+                .build();
+
+        Ingredient chocolate = Ingredient.builder()
+                .name("Chocolate")
+                .description("Chocolate is a usually sweet, brown food preparation of roasted and ground cacao seeds that is made in the form of a liquid, paste, or in a block, or used as a flavoring ingredient in other foods.")
+                //  .ImageUrl("pepper.jpg")
+                .unit(IngredientUnit.KG)
+                .imageUrl("https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/07/07/14/melting-choc-istock.jpg?w968h681")
+                .build();
+
+
+        Ingredient mushroom = Ingredient.builder()
+                .name("Mushroom")
+                .description("A mushroom, or toadstool, is the fleshy, spore-bearing fruiting body of a fungus, typically produced above ground, on soil, or on its food source.")
+                //  .ImageUrl("pepper.jpg")
+                .unit(IngredientUnit.KG)
+                .imageUrl("https://images-na.ssl-images-amazon.com/images/I/71LhWci7mFL._SX522_.jpg")
+                .build();
+
+        Ingredient butter = Ingredient.builder()
+                .name("Butter")
+                .description("Butter is a dairy product with high butterfat content which is solid when chilled and at room temperature in some regions, and liquid when warmed.")
+                //  .ImageUrl("pepper.jpg")
+                .unit(IngredientUnit.KG)
+                .imageUrl("https://upload.wikimedia.org/wikipedia/commons/d/d3/%C5%A0v%C3%A9dsk%C3%BD_kol%C3%A1%C4%8D_naruby_904_%28cropped%29.JPG")
+                .build();
+
+
+        ingredientRepository.save(salt);  //1
+        ingredientRepository.save(sugar); //2
+        ingredientRepository.save(pepper); //3
+        ingredientRepository.save(milk); //4
+        ingredientRepository.save(honey); //5
+        ingredientRepository.save(chocolate); //6
+        ingredientRepository.save(mushroom); //7
+        ingredientRepository.save(butter); //8
+
+
+
 
 
 
