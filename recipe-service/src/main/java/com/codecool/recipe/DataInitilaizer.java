@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
 @Component
 public class DataInitilaizer implements CommandLineRunner {
 
@@ -235,9 +236,9 @@ public class DataInitilaizer implements CommandLineRunner {
         recipeRepository.save(parizsi3);
         recipeRepository.save(menuone3);
 
-*/
+
     }
-}
+}*/
 
 
 
