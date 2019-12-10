@@ -5,14 +5,19 @@ import com.codecool.user.repository.WebKitchenUserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WebKitchenUserService {
 
-    private final WebKitchenUserRepository webKitchenUserRepository;
+    private WebKitchenUserRepository webKitchenUserRepository;
 
     public WebKitchenUserService(WebKitchenUserRepository webKitchenUserRepository) {
         this.webKitchenUserRepository = webKitchenUserRepository;
+    }
+
+    public WebKitchenUserService() {
+
     }
 
     public void addUser(WebKitchenUser user) {
@@ -21,5 +26,9 @@ public class WebKitchenUserService {
 
     public List<WebKitchenUser> getAllUsers() {
         return webKitchenUserRepository.findAll();
+    }
+
+    public Optional<WebKitchenUser> getUserByUsername(String username){
+        return webKitchenUserRepository.findAllByUsename(username);
     }
 }
