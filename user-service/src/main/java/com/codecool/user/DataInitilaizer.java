@@ -26,6 +26,7 @@ public class DataInitilaizer implements CommandLineRunner {
         WebKitchenUser admin = WebKitchenUser.builder()
                 .name("Kiss Lajos admin")
                 .username("admin")
+                .email("admin@admin.com")
                 .password(passwordEncoder.encode("admin"))
                 .roles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"))
                 .build();
@@ -33,6 +34,7 @@ public class DataInitilaizer implements CommandLineRunner {
         WebKitchenUser user = WebKitchenUser.builder()
                 .name("Kiss Lajos user")
                 .username("user")
+                .email("user@user.hu")
                 .password(passwordEncoder.encode("user"))
                 .roles(Collections.singletonList("ROLE_USER"))
                 .build();

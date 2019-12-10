@@ -3,9 +3,7 @@ package com.codecool.user.controller;
 
 import com.codecool.user.model.WebKitchenUser;
 import com.codecool.user.service.WebKitchenUserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +20,10 @@ public class WebKitchenUserController {
     @GetMapping("/")
     public List<WebKitchenUser> getAllUsers(){
         return webKitchenUserService.getAllUsers();
+    }
+
+    @GetMapping("/{username}")
+    public WebKitchenUser getUserByname(@PathVariable("username") String username){
+        return webKitchenUserService.getUserByUsername(username).orElse(null);
     }
 }

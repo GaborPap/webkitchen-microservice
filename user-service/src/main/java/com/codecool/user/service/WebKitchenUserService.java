@@ -25,4 +25,20 @@ public class WebKitchenUserService {
     public Optional<WebKitchenUser> getUserByUsername(String username){
         return webKitchenUserRepository.findAllByUsername(username);
     }
+
+    public String checkUsernameAndPasswordPersent(String username, String email) {
+        boolean userNameExists = webKitchenUserRepository.findByUsername(username).isPresent();
+        boolean emailExists = webKitchenUserRepository.findByEmail(email).isPresent();
+
+        if (userNameExists && emailExists)
+            return "Username and email address already taken";
+
+        if (userNameExists)
+            return "Username already taken";
+
+        if (emailExists)
+            return "Email address already taken";
+
+        return "";
+    }
 }

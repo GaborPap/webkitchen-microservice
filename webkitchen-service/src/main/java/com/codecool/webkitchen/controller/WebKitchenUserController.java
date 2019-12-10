@@ -22,4 +22,5 @@ public class WebKitchenUserController {
     public List<WebKitchenUser> getAllUsers(){
         return webKitchenUserService.getAllUsers();
     }
+
 }

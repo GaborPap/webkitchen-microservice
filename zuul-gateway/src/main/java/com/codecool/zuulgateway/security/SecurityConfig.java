@@ -26,6 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("webkitchen/**").permitAll()
+                .antMatchers("user/**").permitAll()
+                .antMatchers("auth/**").permitAll()
 
        /*         .antMatchers("/list").authenticated()
                 .antMatchers("/addTodo").hasAnyRole("ADMIN","MODERATOR")

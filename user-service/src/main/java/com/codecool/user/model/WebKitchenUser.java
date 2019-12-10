@@ -29,6 +29,9 @@ public class WebKitchenUser {
     private String username;
 
     @NotNull
+    private String email;
+
+    @NotNull
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)
