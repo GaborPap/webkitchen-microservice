@@ -26,4 +26,11 @@ public class WebKitchenUserController {
     public WebKitchenUser getUserByname(@PathVariable("username") String username){
         return webKitchenUserService.getUserByUsername(username).orElse(null);
     }
+
+    @PostMapping("/")
+    public WebKitchenUser addNewUser(@RequestBody WebKitchenUser webKitchenUser){
+        webKitchenUserService.addUser(webKitchenUser);
+        return webKitchenUser;
+    }
+
 }

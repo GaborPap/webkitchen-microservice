@@ -1,7 +1,6 @@
 package com.codecool.zuulgateway.security;
 
 import com.codecool.user.model.WebKitchenUser;
-import com.codecool.user.service.WebKitchenUserService;
 import lombok.SneakyThrows;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -31,7 +30,6 @@ RestTemplate restTemplate = new RestTemplate();
         );
         return response.getBody();
     }
-    WebKitchenUserService webKitchenUserService;
 
     @SneakyThrows
     @Override

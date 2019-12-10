@@ -3,6 +3,8 @@ package com.codecool.user.service;
 import com.codecool.user.model.WebKitchenUser;
 import com.codecool.user.repository.WebKitchenUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +17,7 @@ public class WebKitchenUserService {
    private WebKitchenUserRepository webKitchenUserRepository;
 
     public void addUser(WebKitchenUser user) {
+        user.setPassword(encodePassword(user.getPassword()));
         webKitchenUserRepository.save(user);
     }
 
@@ -24,6 +27,12 @@ public class WebKitchenUserService {
 
     public Optional<WebKitchenUser> getUserByUsername(String username){
         return webKitchenUserRepository.findAllByUsername(username);
+    }
+
+    public String encodePassword(String password) {
+        PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
+        return passwordEncoder.encode(password);
     }
 
     public String checkUsernameAndPasswordPersent(String username, String email) {

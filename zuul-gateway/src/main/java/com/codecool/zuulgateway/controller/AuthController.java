@@ -3,13 +3,14 @@ package com.codecool.zuulgateway.controller;
 import com.codecool.user.model.WebKitchenUser;
 import com.codecool.user.service.WebKitchenUserService;
 import com.codecool.zuulgateway.security.JwtTokenServices;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
@@ -23,7 +24,7 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = {"http://127.0.0.1:3000","http://localhost:3000"} )
 public class AuthController {
 
-   WebKitchenUserService webKitchenUserService;
+    WebKitchenUserService webKitchenUserService;
 
     private final AuthenticationManager authenticationManager;
 
@@ -34,18 +35,36 @@ public class AuthController {
         this.jwtTokenServices = jwtTokenServices;
     }
 
+    private RestTemplate restTemplate = new RestTemplate();
+
+
+
     @PostMapping("/register")
     public ResponseEntity signup(@RequestBody WebKitchenUser webKitchenUser, HttpServletResponse response) {
+
+       /* ResponseEntity<WebKitchenUser> response1 = restTemplate.exchange(
+                "http://localhost:8071/user/",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<WebKitchenUser>() {
+                }
+        );
         webKitchenUser.setRoles(Collections.singletonList("ROLE_USER"));
 
         String errorMessage = webKitchenUserService.checkUsernameAndPasswordPersent(webKitchenUser.getUsername(), webKitchenUser.getEmail());
         if (errorMessage.length()>0) {
             return new ResponseEntity<>(errorMessage, HttpStatus.CREATED);
-        }
-        webKitchenUserService.addUser(webKitchenUser);
+        }*/
+
+       webKitchenUser.setName(webKitchenUser.getUsername());
+        webKitchenUser.setRoles(Collections.singletonList("ROLE_USER"));
+        HttpEntity<WebKitchenUser> request = new HttpEntity<>(webKitchenUser);
+        restTemplate.postForObject("http://localhost:8071/user/", request, WebKitchenUser.class);
+
         String token = createToken(webKitchenUser, Collections.singletonList("ROLE_USER"));
         Map<Object, Object> model = new HashMap<>();
         model.put("username", webKitchenUser.getUsername());
+        model.put("role",Collections.singletonList("ROLE_USER"));
         model.put("token", token);
 
         return ResponseEntity.ok(model);
@@ -59,6 +78,8 @@ public class AuthController {
         String token = createToken(userData,null);
         Map<Object, Object> model = new HashMap<>();
         model.put("username", userData.getUsername());
+        model.put("name", userData.getName());
+        model.put("role",getRoles(userData, userData.getUsername()));
         model.put("token", token);
 
         return ResponseEntity.ok(model);
@@ -67,12 +88,18 @@ public class AuthController {
     private String createToken(WebKitchenUser userData, List<String> roles){
         String username = userData.getUsername();
         if (roles==null) {
-            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, userData.getPassword()));
-            roles = authentication.getAuthorities()
-                    .stream()
-                    .map(GrantedAuthority::getAuthority)
-                    .collect(Collectors.toList());
+           getRoles(userData, username);
         }
         return jwtTokenServices.createToken(username, roles);
     }
+
+    private List<String> getRoles(WebKitchenUser userData, String username){
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, userData.getPassword()));
+        List<String> roles = authentication.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
+        return roles;
+    }
+
 }

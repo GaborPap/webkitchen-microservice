@@ -19,20 +19,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        System.out.println(http);
         http
                 .httpBasic().disable()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("webkitchen/**").permitAll()
+                .antMatchers("webkitchen/ingredient/**").permitAll()
                 .antMatchers("user/**").permitAll()
                 .antMatchers("auth/**").permitAll()
 
        /*         .antMatchers("/list").authenticated()
                 .antMatchers("/addTodo").hasAnyRole("ADMIN","MODERATOR")
-                .antMatchers("/todos/**").hasAnyRole("ADMIN")
-                .anyRequest().denyAll()*/
+                .antMatchers("/todos/**").hasAnyRole("ADMIN")*/
+
+              //  .anyRequest().denyAll()
                 .and()
                 .addFilterBefore(new JwtTokenFilter(jwtTokenServices), UsernamePasswordAuthenticationFilter.class);
     }
