@@ -49,4 +49,5 @@ public class ZuulGatewayApplication {
 		source.registerCorsConfiguration("/**", config);
 		return new CorsFilter(source);
 	}
+
 }
