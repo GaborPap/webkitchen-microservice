@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private WebKitchenUserService webKitchenUserService;
+    WebKitchenUserService webKitchenUserService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

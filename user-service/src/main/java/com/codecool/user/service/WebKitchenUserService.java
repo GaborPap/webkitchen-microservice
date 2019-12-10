@@ -2,6 +2,7 @@ package com.codecool.user.service;
 
 import com.codecool.user.model.WebKitchenUser;
 import com.codecool.user.repository.WebKitchenUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,15 +11,8 @@ import java.util.Optional;
 @Service
 public class WebKitchenUserService {
 
-    private WebKitchenUserRepository webKitchenUserRepository;
-
-    public WebKitchenUserService(WebKitchenUserRepository webKitchenUserRepository) {
-        this.webKitchenUserRepository = webKitchenUserRepository;
-    }
-
-    public WebKitchenUserService() {
-
-    }
+   @Autowired
+   private WebKitchenUserRepository webKitchenUserRepository;
 
     public void addUser(WebKitchenUser user) {
         webKitchenUserRepository.save(user);
@@ -29,6 +23,6 @@ public class WebKitchenUserService {
     }
 
     public Optional<WebKitchenUser> getUserByUsername(String username){
-        return webKitchenUserRepository.findAllByUsename(username);
+        return webKitchenUserRepository.findAllByUsername(username);
     }
 }

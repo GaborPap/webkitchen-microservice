@@ -24,7 +24,7 @@ public class WebKitchenUserService {
     }
 
     public List<WebKitchenUser> getAllUsers(){
-
+        System.out.println("sélfsédjfslkdjfklsdjfklsdjfklsdjfklsjdflkjsdlkfjsdlkjflsdkfj");
         ResponseEntity<List<WebKitchenUser>> response = restTemplate.exchange(
                 usersUrl + "/",
                 HttpMethod.GET,

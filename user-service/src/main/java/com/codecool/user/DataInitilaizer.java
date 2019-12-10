@@ -3,7 +3,6 @@ package com.codecool.user;
 
 import com.codecool.user.model.WebKitchenUser;
 import com.codecool.user.service.WebKitchenUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,8 +15,11 @@ import java.util.Collections;
 public class DataInitilaizer implements CommandLineRunner {
     PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
-    @Autowired
     private WebKitchenUserService webKitchenUserService;
+
+    public DataInitilaizer(WebKitchenUserService webKitchenUserService) {
+        this.webKitchenUserService = webKitchenUserService;
+    }
 
     @Override
     public void run(String... args) throws Exception {

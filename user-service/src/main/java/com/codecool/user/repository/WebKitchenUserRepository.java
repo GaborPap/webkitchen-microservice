@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface WebKitchenUserRepository extends JpaRepository<WebKitchenUser, Long> {
 
-    Optional<WebKitchenUser> findAllByUsename(String username);
+    Optional<WebKitchenUser> findAllByUsername(String username);
 }
