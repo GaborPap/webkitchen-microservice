@@ -1,6 +1,5 @@
 package com.codecool.ingredient.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
