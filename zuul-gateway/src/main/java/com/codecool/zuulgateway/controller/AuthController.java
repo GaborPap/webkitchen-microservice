@@ -3,7 +3,10 @@ package com.codecool.zuulgateway.controller;
 import com.codecool.user.model.WebKitchenUser;
 import com.codecool.user.service.WebKitchenUserService;
 import com.codecool.zuulgateway.security.JwtTokenServices;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -42,21 +45,24 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity signup(@RequestBody WebKitchenUser webKitchenUser, HttpServletResponse response) {
 
-       /* ResponseEntity<WebKitchenUser> response1 = restTemplate.exchange(
-                "http://localhost:8071/user/",
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<WebKitchenUser>() {
-                }
-        );
-        webKitchenUser.setRoles(Collections.singletonList("ROLE_USER"));
+            String s = "http://localhost:8071/user/check/"+webKitchenUser.getUsername()+"/"+webKitchenUser.getEmail();
 
-        String errorMessage = webKitchenUserService.checkUsernameAndPasswordPersent(webKitchenUser.getUsername(), webKitchenUser.getEmail());
-        if (errorMessage.length()>0) {
+            ResponseEntity<String> response1 = restTemplate.exchange(
+                    "http://localhost:8071/user/check/"+webKitchenUser.getUsername()+"/"+webKitchenUser.getEmail(),
+                    HttpMethod.GET,
+                    null,
+                    new ParameterizedTypeReference<String>() {
+                    }
+            );
+
+
+        String errorMessage = response1.getBody();
+        System.out.println(errorMessage);
+        if (errorMessage!=null) {
             return new ResponseEntity<>(errorMessage, HttpStatus.CREATED);
-        }*/
+        }
 
-       webKitchenUser.setName(webKitchenUser.getUsername());
+        webKitchenUser.setName(webKitchenUser.getUsername());
         webKitchenUser.setRoles(Collections.singletonList("ROLE_USER"));
         HttpEntity<WebKitchenUser> request = new HttpEntity<>(webKitchenUser);
         restTemplate.postForObject("http://localhost:8071/user/", request, WebKitchenUser.class);
@@ -95,11 +101,10 @@ public class AuthController {
 
     private List<String> getRoles(WebKitchenUser userData, String username){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, userData.getPassword()));
-        List<String> roles = authentication.getAuthorities()
+        return authentication.getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
-        return roles;
     }
 
 }

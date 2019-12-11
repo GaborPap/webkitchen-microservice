@@ -33,4 +33,9 @@ public class WebKitchenUserController {
         return webKitchenUser;
     }
 
+    @GetMapping("/check/{username}/{email}")
+    public String checkUserExists(@PathVariable("username") String username, @PathVariable("email") String email){
+        return webKitchenUserService.checkUsernameAndPasswordPersent(username, email);
+    }
+
 }

@@ -26,7 +26,7 @@ public class WebKitchenUserService {
     }
 
     public Optional<WebKitchenUser> getUserByUsername(String username){
-        return webKitchenUserRepository.findAllByUsername(username);
+        return webKitchenUserRepository.findByUsername(username);
     }
 
     public String encodePassword(String password) {

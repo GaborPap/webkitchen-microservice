@@ -4,8 +4,6 @@ package com.codecool.user;
 import com.codecool.user.model.WebKitchenUser;
 import com.codecool.user.service.WebKitchenUserService;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -13,7 +11,6 @@ import java.util.Collections;
 
 @Component
 public class DataInitilaizer implements CommandLineRunner {
-    PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
     private WebKitchenUserService webKitchenUserService;
 
@@ -27,7 +24,7 @@ public class DataInitilaizer implements CommandLineRunner {
                 .name("Kiss Lajos admin")
                 .username("admin")
                 .email("admin@admin.com")
-                .password(passwordEncoder.encode("admin"))
+                .password("admin")
                 .roles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"))
                 .build();
 
@@ -35,7 +32,7 @@ public class DataInitilaizer implements CommandLineRunner {
                 .name("Kiss Lajos user")
                 .username("user")
                 .email("user@user.hu")
-                .password(passwordEncoder.encode("user"))
+                .password("user")
                 .roles(Collections.singletonList("ROLE_USER"))
                 .build();
 
