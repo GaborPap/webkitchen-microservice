@@ -1,10 +1,8 @@
 package com.codecool.webkitchen.controller;
 
 
-import com.codecool.ingredient.model.Ingredient;
 import com.codecool.recipe.model.Recipe;
 import com.codecool.webkitchen.service.RecipeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
