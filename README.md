@@ -13,6 +13,7 @@ This project is created with a Spring boot framework using Microservices Archite
 Servers in the project:
 - Ingredient server: handle ingredients operations. Store ingredients in the PostgreSQL database. Handle CRUD operations via controllers. 
 - Recipe server: handle recipe operations. Store ingredients in the PostgreSQL database. Handle CRUD operations via controllers. 
+- User server: handle user operations. Store users in the PostgreSQL database. Handle CRUD operations via controllers. 
 - WebKitchen server: handle incoming and outgoing requests and responses from and to the frontend. It is in contact with ingredients and recipe servers.
 - Eureka server: holds the information about all client-service applications.
 - Zuul server: a gateway application that handles all the requests and does the dynamic routing of microservice applications.
