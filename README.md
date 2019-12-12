@@ -21,6 +21,12 @@ Servers in the project:
 
 **Screenshots from the project:**
 
+***Main page***
+
+<img src=/public/static/images/screenshots/mainpage.png width=700 />
+
+On the main page can we go to ingredients and recipes list. 
+
 ***Ingredient list page***
 
 <img src=/public/static/images/screenshots/ingredient_list.png width=700 />
@@ -32,11 +38,12 @@ On the ingredient list page, we can see the ingredients which are stored in our 
 
 <img src=/public/static/images/screenshots/ingredient_update.png width=700>
 
-On this page, we can edit the data of existing ingredients. On the same page can we add a new recipe to our kitchen.  
+On this page, we can edit the data of existing ingredients. IóOn the same page can we add a new recipe to our kitchen.  
 
 ***Recipe list page***
 
 <img src=/public/static/images/screenshots/recipe_list.png width=700>
+
 <img src=/public/static/images/screenshots/recipe_list_with_ingredients.png width=700>
 
 On this page, we can see the recipes stored in our WebKitchen. We can see the basic details and the ingredients by the recipes. 
@@ -47,6 +54,7 @@ On this page, we can see the recipes stored in our WebKitchen. We can see the ba
 
 On this page, we can edit the existing recipe or we can add a new recipe. The ingredients can be added and removed by drag and drop. 
 
+<hr>
 
 <hr>
 
