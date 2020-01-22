@@ -7,7 +7,9 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -27,6 +29,10 @@ public class WebKitchenUserService {
 
     public Optional<WebKitchenUser> getUserByUsername(String username){
         return webKitchenUserRepository.findByUsername(username);
+    }
+
+    public Optional<WebKitchenUser> getUserById(Long userId){
+        return webKitchenUserRepository.findById(userId);
     }
 
     public String encodePassword(String password) {
@@ -49,5 +55,35 @@ public class WebKitchenUserService {
             return "Email address already taken";
 
         return "";
+    }
+    public void changeAllowed(Long userId, Boolean allowed) {
+        webKitchenUserRepository.updateAllowed(userId, allowed);
+    }
+
+    public Boolean updateUserRoles(Long userId, Map<String, Object> roles) {
+        ArrayList<String> rolesArray = getRolesArrayFromObject(roles);
+        if (rolesArray.size() > 0) {
+            List<String> roleList = new ArrayList<>();
+            for (String role : rolesArray)
+                roleList.add("ROLE_" + role);
+            Optional<WebKitchenUser> webKitchenUser = webKitchenUserRepository.findById(userId);
+            if (webKitchenUser.isPresent()) {
+                WebKitchenUser tmp = webKitchenUser.get();
+                tmp.setRoles(roleList);
+                webKitchenUserRepository.save(tmp);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private ArrayList<String> getRolesArrayFromObject(Map<String, Object> roles) {
+        ArrayList<String> rolesArray = new ArrayList<>();
+        try {
+            rolesArray = (ArrayList<String>) roles.get("userRoles") == null ? new ArrayList<>() : (ArrayList<String>) roles.get("userRoles");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return rolesArray;
     }
 }

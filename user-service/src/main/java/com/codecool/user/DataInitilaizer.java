@@ -1,4 +1,4 @@
-package com.codecool.user;
+/*package com.codecool.user;
 
 
 import com.codecool.user.model.WebKitchenUser;
@@ -26,6 +26,7 @@ public class DataInitilaizer implements CommandLineRunner {
                 .email("admin@admin.com")
                 .password("admin")
                 .roles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"))
+                .allowed(true)
                 .build();
 
         WebKitchenUser user = WebKitchenUser.builder()
@@ -34,6 +35,7 @@ public class DataInitilaizer implements CommandLineRunner {
                 .email("user@user.hu")
                 .password("user")
                 .roles(Collections.singletonList("ROLE_USER"))
+                .allowed(true)
                 .build();
 
         webKitchenUserService.addUser(admin);
@@ -43,6 +45,6 @@ public class DataInitilaizer implements CommandLineRunner {
 
 }
 
-
+*/
 
 

@@ -34,6 +34,9 @@ public class WebKitchenUser {
     @NotNull
     private String password;
 
+
+    private Boolean allowed;
+
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();
